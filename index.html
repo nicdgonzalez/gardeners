@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,intial-scale=1">
+    <script type="module">
+        import { users } from "./timezones.json";
+
+        const timesList = document.querySelector("section#times ul");
+
+        const updateTimes = function () {
+            const date = new Date();
+
+            for (const user in users) {
+                const options = users[user];
+                const dateTime = new Intl.DateTimeFormat("en-US", options);
+                const listElement = document.createElement("li")
+
+                const nameElement = document.createElement("h1");
+                nameElement.appendChild(document.createTextNode(user));
+                const timeElement = document.createElement("p");
+                timeElement.appendChild(document.createTextNode(dateTime.format(date)));
+
+                listElement.appendChild(nameElement);
+                listElement.appendChild(timeElement);
+
+                timesList.appendChild(listElement);
+            }
+        };
+
+        setInterval(updateTimes, 1000);
+    </script>
+</head>
+
+<body>
+    <main>
+        <section id="times">
+            <div class="container">
+                <ul>
+                    <!-- add in list items using JavaScript -->
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
