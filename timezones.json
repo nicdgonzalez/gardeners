@@ -1,0 +1,74 @@
+{
+    "users": {
+        "ruuflufferoo": {
+            "year": "numeric",
+            "month": "numeric",
+            "day": "numeric",
+            "hour": "numeric",
+            "minute": "numeric",
+            "second": "numeric",
+            "hour12": true,
+            "timeZone": "Asia/Manila"
+        },
+        "oniyuriasahi": {
+            "year": "numeric",
+            "month": "numeric",
+            "day": "numeric",
+            "hour": "numeric",
+            "minute": "numeric",
+            "second": "numeric",
+            "hour12": true,
+            "timeZone": "Europe/Paris"
+        },
+        "nicdgonzalez": {
+            "year": "numeric",
+            "month": "numeric",
+            "day": "numeric",
+            "hour": "numeric",
+            "minute": "numeric",
+            "second": "numeric",
+            "hour12": true,
+            "timeZone": "US/Eastern"
+        },
+        ".taiyou": {
+            "year": "numeric",
+            "month": "numeric",
+            "day": "numeric",
+            "hour": "numeric",
+            "minute": "numeric",
+            "second": "numeric",
+            "hour12": true,
+            "timeZone": "US/Eastern"
+        },
+        "lulufleur": {
+            "year": "numeric",
+            "month": "numeric",
+            "day": "numeric",
+            "hour": "numeric",
+            "minute": "numeric",
+            "second": "numeric",
+            "hour12": true,
+            "timeZone": "US/Eastern"
+        },
+        "sonnysammy": {
+            "year": "numeric",
+            "month": "numeric",
+            "day": "numeric",
+            "hour": "numeric",
+            "minute": "numeric",
+            "second": "numeric",
+            "hour12": true,
+            "timeZone": "US/Eastern"
+        },
+        "ariagalz": {
+            "year": "numeric",
+            "month": "numeric",
+            "day": "numeric",
+            "hour": "numeric",
+            "minute": "numeric",
+            "second": "numeric",
+            "hour12": true,
+            "timeZone": "US/Central"
+        }
+    }
+}
