@@ -4,9 +4,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,intial-scale=1">
+        <title>Gardeners Times</title>
         <link href="./public/css/style.css" rel="stylesheet"/>
-        <script src="./public/js/script.js" defer></script>
-        <script src="./public/js/theme.js" defer></script>
     </head>
 
     <body>
@@ -25,40 +24,44 @@
                     <h1></h1>
                 </div>
                 <div id="droppable-area">
-                    <!-- this is the area where you can drop a user's card -->
+                    <h1 align="center" width="100%">ORGANIZE CARDS HERE</h1>
+                    <div class="profile-cards drop-zone" ondrop="onDrop(event)" ondragover="onDragOver(event)">
+                        <!-- this is the area where you can drop a user's card -->
+                    </div>
                 </div>
-                <div id="profile-cards">
-                    <div class="profile-card" id="ruuflufferoo" draggable="true">
+                <div class="profile-cards" ondrop="onDrop(event)" ondragover="onDragOver(event)">
+
+                    <div class="profile-card" id="ruuflufferoo" draggable="true" ondragstart="onDragStart(event)">
                         <h1>Rue</h1>
                         <h2>Moderator</h2>
                         <p></p>
                     </div>
-                    <div class="profile-card" id="oniyuriasahi" draggable="true">
+                    <div class="profile-card" id="oniyuriasahi" draggable="true" ondragstart="onDragStart(event)">
                         <h1>Asahi</h1>
                         <h2>Moderator</h2>
                         <p></p>
                     </div>
-                    <div class="profile-card" id="nicdgonzalez" draggable="true">
+                    <div class="profile-card" id="nicdgonzalez" draggable="true" ondragstart="onDragStart(event)">
                         <h1>Nic</h1>
                         <h2>Moderator</h2>
                         <p></p>
                     </div>
-                    <div class="profile-card" id="-taiyou" draggable="true">
+                    <div class="profile-card" id="-taiyou" draggable="true" ondragstart="onDragStart(event)">
                         <h1>Taiyou</h1>
                         <h2>Sun</h2>
                         <p></p>
                     </div>
-                    <div class="profile-card" id="lulufleur" draggable="true">
+                    <div class="profile-card" id="lulufleur" draggable="true" ondragstart="onDragStart(event)">
                         <h1>Lulu</h1>
                         <h2>Flower</h2>
                         <p></p>
                     </div>
-                    <div class="profile-card" id="sonnysammy" draggable="true">
+                    <div class="profile-card" id="sonnysammy" draggable="true" ondragstart="onDragStart(event)">
                         <h1>Sonny</h1>
                         <h2>Moderator</h2>
                         <p></p>
                     </div>
-                    <div class="profile-card" id="ariagalz" draggable="true">
+                    <div class="profile-card" id="ariagalz" draggable="true" ondragstart="onDragStart(event)">
                         <h1>Aria</h1>
                         <h2>Moderator</h2>
                         <p></p>
@@ -68,5 +71,8 @@
 
         </main>
     </body>
+    <script src="./public/js/script.js"></script>
+    <script src="./public/js/draggable.js"></script>
+    <script src="./public/js/theme.js"></script>
 
 </html>
