@@ -12,6 +12,7 @@
     --color-scrollbar: #dddddd;
     --color-scrollbar-track: #aaaaaaf0;
     --color-header-break: #0000000f;
+    --size-navbar-height: 3.5em;
     transition: 0.5s;
 }
 
@@ -54,6 +55,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: center;
+    height: var(--size-navbar-height);
 }
 
 .container {
@@ -73,7 +75,7 @@ header {
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    margin-top: 2em;
+    margin-top: calc(var(--size-navbar-height) + 16px);
 }
 
 
