@@ -1,118 +1,72 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" data-theme="light">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,intial-scale=1">
-    <script type="module">
-        // When adding new users, use this for the "timeZone" value:
-        // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,intial-scale=1">
+        <link href="./public/css/style.css" rel="stylesheet"/>
+        <script src="./public/js/script.js" defer></script>
+        <script src="./public/js/theme.js" defer></script>
+    </head>
 
-        const baseOptions = {
-            "year": "numeric",
-            "month": "numeric",
-            "day": "numeric",
-            "hour": "numeric",
-            "minute": "numeric",
-            "second": "numeric",
-            "hour12": true,
-        };
+    <body>
+        <main>
+            <header>
+                <div class="container">
+                    <div id="theme-toggle">
+                        <div id="theme-indicator">
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section id="timestamps">
+                <div id="local-time">
+                    <p>YOUR TIME RIGHT NOW</p>
+                    <h1></h1>
+                </div>
+                <div id="droppable-area">
+                    <!-- this is the area where you can drop a user's card -->
+                </div>
+                <div id="profile-cards">
+                    <div class="profile-card" id="ruuflufferoo" draggable="true">
+                        <h1>Rue</h1>
+                        <h2>Moderator</h2>
+                        <p></p>
+                    </div>
+                    <div class="profile-card" id="oniyuriasahi" draggable="true">
+                        <h1>Asahi</h1>
+                        <h2>Moderator</h2>
+                        <p></p>
+                    </div>
+                    <div class="profile-card" id="nicdgonzalez" draggable="true">
+                        <h1>Nic</h1>
+                        <h2>Moderator</h2>
+                        <p></p>
+                    </div>
+                    <div class="profile-card" id="-taiyou" draggable="true">
+                        <h1>Taiyou</h1>
+                        <h2>Sun</h2>
+                        <p></p>
+                    </div>
+                    <div class="profile-card" id="lulufleur" draggable="true">
+                        <h1>Lulu</h1>
+                        <h2>Flower</h2>
+                        <p></p>
+                    </div>
+                    <div class="profile-card" id="sonnysammy" draggable="true">
+                        <h1>Sonny</h1>
+                        <h2>Moderator</h2>
+                        <p></p>
+                    </div>
+                    <div class="profile-card" id="ariagalz" draggable="true">
+                        <h1>Aria</h1>
+                        <h2>Moderator</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </section>
 
-        const users = {
-            "ruuflufferoo": {
-                "timeZone": "Asia/Manila",
-                ...baseOptions
-            },
-            "oniyuriasahi": {
-                "timeZone": "Europe/Paris",
-                ...baseOptions
-            },
-            "nicdgonzalez": {
-                "timeZone": "US/Eastern",
-                ...baseOptions
-            },
-            ".taiyou": {
-                "timeZone": "US/Eastern",
-                ...baseOptions
-            },
-            "lulufleur": {
-                "timeZone": "US/Eastern",
-                ...baseOptions
-            },
-            "sonnysammy": {
-                "timeZone": "US/Eastern",
-                ...baseOptions
-            },
-            "ariagalz": {
-                "timeZone": "US/Central",
-                ...baseOptions
-            }
-        };
-
-        /**
-         * Convert a Discord username to a valid HTML attribute.
-         * @param {string} name - The Discord username of the user.
-         * @returns {string}
-         */
-        const usernameToAttribute = function (name) {
-            return "discord-" + name.replace(".", "-");
-        };
-
-        /**
-         * Convert an HTML attribute back into a Discord username.
-         * @param {string} attr - The HTML attribute to convert.
-         * @returns {string}
-         */
-        const attributeToUsername = function (attr) {
-            return attr.replace("discord-", "").replace("-", ".");
-        }; const timesList = document.querySelector("section#times ul");
-
-        {
-            const date = new Date();
-
-            for (const user in users) {
-                const options = users[user];
-                const dateTime = new Intl.DateTimeFormat("en-US", options);
-                const listElement = document.createElement("li")
-
-                const nameElement = document.createElement("h1");
-                nameElement.appendChild(document.createTextNode(user));
-                const timeElement = document.createElement("p");
-                timeElement.setAttribute("id", usernameToAttribute(user));
-                timeElement.appendChild(document.createTextNode(dateTime.format(date)));
-
-                listElement.appendChild(nameElement);
-                listElement.appendChild(timeElement);
-
-                timesList.appendChild(listElement);
-            }
-        }
-
-        const updateTimes = function () {
-            const date = new Date();
-
-            for (const user in users) {
-                const options = users[user];
-                const dateTime = new Intl.DateTimeFormat("en-US", options);
-                const timeElement = document.querySelector(`section#times ul li p#${usernameToAttribute(user)}`)
-                timeElement.innerHTML = dateTime.format(date);
-            }
-        };
-
-        setInterval(updateTimes, 1000);
-    </script>
-</head>
-
-<body>
-    <main>
-        <section id="times">
-            <div class="container">
-                <ul>
-                    <!-- add in list items using JavaScript -->
-                </ul>
-            </div>
-        </section>
-    </main>
-</body>
+        </main>
+    </body>
 
 </html>
