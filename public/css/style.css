@@ -11,6 +11,7 @@
     --color-text-primary: #222222;
     --color-scrollbar: #dddddd;
     --color-scrollbar-track: #aaaaaaf0;
+    --color-header-break: #0000000f;
     transition: 0.5s;
 }
 
@@ -19,6 +20,7 @@
     --color-text-primary: #eeeeee;
     --color-scrollbar: #555555f0;
     --color-scrollbar-track: #2a2a2a;
+    --color-header-break: #ffffff0f;
     transition: 0.5s;
 }
 
@@ -45,14 +47,35 @@ main {
     width: 100%;
 }
 
-section#timestamps {
+header {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 900px;
+    justify-content: right;
+    border-bottom: 1px solid var(--color-header-break);
+}
+
+#timestamps {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     min-height: 100vh;
+    margin-top: 2em;
 }
+
 
 .background-inherit {
     background-color: inherit;
@@ -76,15 +99,25 @@ section#timestamps {
     grid-template-rows: repeat(3, 1fr);
 }
 
+@media screen and (max-width: 450px) {
+
+    #profile-cards {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
+    }
+}
+
 .profile-card {
-    margin: 1%;
+    margin: 5px;
+    width: 15em;
     background-color: #0000000f;
-    padding: 10px 15px;
+    padding: 0.5em 1.5em;
     border-radius: 10px;
     border: 1px solid #ffffff0f;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: repeat(3, 1fr);
+    justify-self: center;
 }
 
 .profile-card h1 {
@@ -101,9 +134,11 @@ section#timestamps {
 
 .profile-card p {
     padding: 5px 10px;
-    grid-column-start: 1;
-    grid-column-end: column2-end;
-    grid-row-start: 3;
+    /* grid-column-start: 1; */
+    /* grid-column-end: column2-end; */
+    grid-column: 1 / column2-end;
+    grid-row: 3 / auto;
+    /* grid-row-start: 3; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,22 +161,6 @@ section#timestamps {
 
 [data-theme="light"] .profile-card img {
     filter: invert(0%);
-}
-
-header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.container {
-    padding: 10px 15px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    max-width: 900px;
-    justify-content: right;
-    border-bottom: 1px solid #0000000f;
 }
 
 #theme-toggle {
