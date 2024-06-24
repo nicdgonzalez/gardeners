@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, viewport-fit=cover">
+    <title>Timezone Tracker</title>
+    <script src="./public/js/theme.js"></script>
+    <link href="https://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet" as="style">
+    <link href="./style.css" rel="stylesheet" as="style">
+    <script src="./script.js" defer></script>
+    <script>
+        // set the color theme preferences upon entering the website
+        (() => {
+            const theme = localStorage.getItem("data-theme") || "dark";
+            localStorage.setItem("data-theme", theme);
+
+            const html = document.querySelector("html");
+            console.assert(html != undefined);
+            html.setAttribute("data-theme", theme);
+        })();
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-column">
+                <h1>TIMEZONE <strong>TRACKER</strong></h1>
+            </div>
+            <div class="nav-column">
+                <div id="theme-toggle">
+                    <div id="theme-indicator"></div>
+                </div>
+                <!-- <script>
+                    const toggleTheme = (() => {
+                        const html = document.querySelector("html");
+                        console.assert(html != undefined);
+
+                        const setTheme = function (theme) {
+                            html.setAttribute("data-theme", theme);
+                            localStorage.setItem("data-theme", theme);
+                        };
+
+                        (html.getAttribute("data-theme") === "dark")
+                            ? setTheme("light")
+                            : setTheme("dark");
+                    });
+                </script>
+
+                <div class="toggle-switch">
+                    <label class="switch-label">
+                        <input type="checkbox" class="checkbox" onclick="toggleTheme()">
+                        <span class="slider"></span>
+                    </label>
+                </div> -->
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <p>YOUR TIME</p>
+            <h1 id="header-local-time">00:00:00</h1>
+            <h2 id="header-local-date">January 01, 2000</h2>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- organizable cards go here -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+        </div>
+    </footer>
+</body>
+
+</html>
