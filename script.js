@@ -56,44 +56,107 @@
 
 // -- INITIALIZE WINDOW DATABASE ---------------------------------------------
 
-// window.addEventListener("load", () => {
-//     /** @type {IDBDatabase} */
-//     let database;
-//     const openRequest = window.indexedDB.open("timezoneTracker");
+window.addEventListener("load", () => {
+    /** @type {IDBDatabase} */
+    let database;
+    const openRequest = window.indexedDB.open("timezoneTracker");
 
-//     const onOpenError = function(_event) {
-//         console.error("failed to open IndexedDB");
-//     };
+    const onOpenError = function (_event) {
+        console.error("failed to open IndexedDB");
+    };
 
-//     openRequest.addEventListener("error", onOpenError);
+    openRequest.addEventListener("error", onOpenError);
 
-//     openRequest.addEventListener("success", (_event) => {
-//         console.info("successfully opened IndexedDB");
+    openRequest.addEventListener("success", (_event) => {
+        console.info("successfully opened IndexedDB");
 
-//         database = openRequest.result;
+        database = openRequest.result;
 
-//         // displayData();  // docs example
-//     });
+        // displayData();  // docs example
+    });
 
-//     openRequest.addEventListener("upgradeneeded", (event) => {
-//         database = event.target.result;
-//         database.addEventListener("error", onOpenError);
-        
-//         const objectStore = database.createObjectStore("timezoneTracker", {keyPath: "userProfiles"});
-//         objectStore.createIndex("name", "name", {unique: true});
-//         objectStore.createIndex("tzIdentifier", "tzIdentifier", {unique: false});
-//         objectStore.createIndex("tags", "tags", {unique: false});
-//     });
-// });
+    openRequest.addEventListener("upgradeneeded", (event) => {
+        database = event.target.result;
+        database.addEventListener("error", onOpenError);
+
+        const objectStore = database.createObjectStore(
+            "timezoneTracker",
+            { keyPath: "id", autoIncrement: true }
+        );
+        objectStore.createIndex("id", "id", { unique: true });
+        objectStore.createIndex("name", "name", { unique: false });
+        objectStore.createIndex("timezone", "timezone", { unique: false });
+        objectStore.createIndex("tags", "tags", { unique: false, multiEntry: true });
+    });
+});
 
 // -- USER PROFILES ----------------------------------------------------------
 
 // See following for value to insert into `timeZone`:
 // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
-// const users = (() => {
-//     // ...
-// })();
+const users = (() => {
+    const defaultUsers = {
+        "ruuflufferoo": { timeZone: "Asia/Manila" },
+        "oniyuriasahi": { timeZone: "Europe/Paris" },
+        "nicdgonzalez": { timeZone: "US/Eastern" },
+        ".taiyou": { timeZone: "US/Eastern" },
+        "lulufleur": { timeZone: "US/Eastern" },
+        "sonnysammy": { timeZone: "US/Eastern" },
+        "ariagalz": { timeZone: "US/Central" }
+    };
+
+    /**
+     * Convert a Discord username to a valid HTML attribute.
+     * @param {string} name - A Discord username
+     * @returns {string}
+     */
+    const usernameToAttribute = function (name) {
+        return name.replace(".", "-");
+    };
+
+    /**
+     * Convert an HTML attribute back into a Discord username.
+     * @param {string} attr - An HTML attribute
+     * @returns {string}
+     */
+    const attributeToUsername = function (attr) {
+        return attr.replace("-", ".");
+    };
+
+    setInterval(() => {
+        const now = new Date();
+
+        for (const user in defaultUsers) {
+            const userTime = document.querySelector(`#${usernameToAttribute(user)} p`);
+
+            if (userTime == undefined) {
+                continue;
+            }
+
+            userTime.innerHTML = (() => {
+                const userTimezone = defaultUsers[user].timeZone;
+
+                const date = Intl.DateTimeFormat("en-US", {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    timeZone: userTimezone,
+                }).format(now);
+
+                const time = Intl.DateTimeFormat("en-US", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: false,
+                    timeZone: userTimezone,
+                }).format(now);
+
+                return `${date} @ ${time}`;
+            })();
+        }
+    }, 1000);
+})();
 
 // -- ADD PROFILE POP-UP -----------------------------------------------------
 

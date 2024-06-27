@@ -72,8 +72,8 @@ nav {
     align-items: center;
     height: var(--size-nav-height);
     position: fixed;
-    inset: 1em 0 auto 0;
-    margin: 0 0.75em;
+    inset: 0 0 auto 0;
+    margin: 1em 0.75em auto 0.75em;
 }
 
 nav>.container {
@@ -180,6 +180,7 @@ footer>.container {
     min-height: 50vh;
     justify-items: center;
     padding-bottom: 1em;
+    align-content: center;
 }
 
 @media screen and (max-width: 450px) {
