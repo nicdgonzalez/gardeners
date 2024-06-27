@@ -6,20 +6,11 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, viewport-fit=cover">
     <title>Timezone Tracker</title>
     <script src="./public/js/theme.js"></script>
+    <script src="./public/js/theme.js"></script>
     <link href="https://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet" as="style">
     <link href="./style.css" rel="stylesheet" as="style">
     <script src="./script.js" defer></script>
-    <script>
-        // set the color theme preferences upon entering the website
-        (() => {
-            const theme = localStorage.getItem("data-theme") || "dark";
-            localStorage.setItem("data-theme", theme);
-
-            const html = document.querySelector("html");
-            console.assert(html != undefined);
-            html.setAttribute("data-theme", theme);
-        })();
-    </script>
+    <script src="./public/js/tzinfo.js" defer></script>
 </head>
 
 <body>
@@ -32,28 +23,6 @@
                 <div id="theme-toggle">
                     <div id="theme-indicator"></div>
                 </div>
-                <!-- <script>
-                    const toggleTheme = (() => {
-                        const html = document.querySelector("html");
-                        console.assert(html != undefined);
-
-                        const setTheme = function (theme) {
-                            html.setAttribute("data-theme", theme);
-                            localStorage.setItem("data-theme", theme);
-                        };
-
-                        (html.getAttribute("data-theme") === "dark")
-                            ? setTheme("light")
-                            : setTheme("dark");
-                    });
-                </script>
-
-                <div class="toggle-switch">
-                    <label class="switch-label">
-                        <input type="checkbox" class="checkbox" onclick="toggleTheme()">
-                        <span class="slider"></span>
-                    </label>
-                </div> -->
             </div>
         </div>
     </nav>
@@ -67,8 +36,88 @@
     </header>
 
     <main>
-        <div class="container">
-            <!-- organizable cards go here -->
+        <div id="add-profile-popup" class="container">
+            <div id="popup-header">
+                <div id="popup-close-button">+</div>
+            </div>
+            <div id="popup-body">
+                <form method="post">
+                    <ul>
+                        <li>
+                            <div class="wave-group">
+                                <input class="input" type="text" name="name" id="name" required="">
+                                <label class="label" for="name">
+                                    <span style="--index: 0" class="label-char">N</span>
+                                    <span style="--index: 1" class="label-char">a</span>
+                                    <span style="--index: 2" class="label-char">m</span>
+                                    <span style="--index: 3" class="label-char">e</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="wave-group">
+                                <input class="input" type="text" list="timezone" id="timezone-search" required="">
+                                <label class="label" for="timezone-search">
+                                    <span style="--index: 0" class="label-char">T</span>
+                                    <span style="--index: 1" class="label-char">i</span>
+                                    <span style="--index: 2" class="label-char">m</span>
+                                    <span style="--index: 3" class="label-char">e</span>
+                                    <span style="--index: 3" class="label-char">z</span>
+                                    <span style="--index: 3" class="label-char">o</span>
+                                    <span style="--index: 3" class="label-char">n</span>
+                                    <span style="--index: 3" class="label-char">e</span>
+                                </label>
+                                <datalist name="timezone" id="timezone">
+                                </datalist>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn">Create</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="container profile-cards">
+            <div class="profile-card" id="ruuflufferoo">
+                <h1>Rue</h1>
+                <h2>Moderator</h2>
+                <p>01/01/2000 @ 00:00:00</p>
+            </div>
+            <div class="profile-card" id="nicdgonzalez">
+                <h1>Nic</h1>
+                <h2>Moderator</h2>
+                <p>01/01/2000 @ 00:00:00</p>
+            </div>
+            <div class="profile-card" id="oniyuriasahi">
+                <h1>Asahi</h1>
+                <h2>Moderator</h2>
+                <p>01/01/2000 @ 00:00:00</p>
+            </div>
+            <div class="profile-card" id="-taiyou">
+                <h1>Taiyou</h1>
+                <h2>Moderator</h2>
+                <p>01/01/2000 @ 00:00:00</p>
+            </div>
+            <div class="profile-card" id="lulufleurvt">
+                <h1>Lulu</h1>
+                <h2>Moderator</h2>
+                <p>01/01/2000 @ 00:00:00</p>
+            </div>
+            <div class="profile-card" id="sonnysammy">
+                <h1>Sonny</h1>
+                <h2>Moderator</h2>
+                <p>01/01/2000 @ 00:00:00</p>
+            </div>
+            <div class="profile-card" id="ariagalz">
+                <h1>Aria</h1>
+                <h2>Moderator</h2>
+                <p>01/01/2000 @ 00:00:00</p>
+            </div>
+
+            <div id="add-profile-button" class="profile-card">
+                <div class="plus-button">+</div>
+            </div>
         </div>
     </main>
 
